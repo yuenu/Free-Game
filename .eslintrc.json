@@ -1,13 +1,17 @@
 {
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommend",
-    "plugin:react/recommend",
-    "plugin:react-hook/recommend",
-    "prettier",
-    "prettier/@typescript-eslint"
-  ]
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["@typescript-eslint"],
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommend",
+		"plugin:react/recommend",
+		"plugin:react-hook/recommend",
+		"prettier",
+		"prettier/@typescript-eslint"
+	],
+	"rules": {
+		"indent": ["error", 2],
+		"quotes": ["error", "single"]
+	}
 }
