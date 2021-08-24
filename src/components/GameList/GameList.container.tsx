@@ -13,11 +13,13 @@ const GameList = (): ReactElement => {
 	const onFilterChange = useCallback((event: ChangeEvent<HTMLFormElement>) => {
 		setFilter(current => ({
 			...current,
-			[event.target.name]: event.target.value
+			[event.target.name]: event.target.value,
 		}))
 		event.preventDefault()
 	}, [])
-	return <GameListRnder err={error} games={games} onFilterChange={onFilterChange} />
+	return (
+		<GameListRnder err={error} games={games} onFilterChange={onFilterChange} />
+	)
 }
 
 export default GameList

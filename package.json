@@ -8,9 +8,10 @@
 		"dev": "webpack-cli serve",
 		"build": "webpack",
 		"type:check": "tsc",
-		"lint:ts": "eslint './src/**/*.{tsx,ts}'",
-		"lint:css": "stylelint './src/**/*.styles.ts'",
-		"lint": "yarn lint:ts && yarn lint:css"
+		"lint:ts": "eslint ./src/**/*.{ts,tsx}",
+		"lint:css": "stylelint **/*.styles.{ts,tsx}",
+		"lint": "yarn lint:ts && yarn lint:css",
+		"prettier-check": "prettier --check"
 	},
 	"husky": {
 		"hooks": {
@@ -44,6 +45,7 @@
 		"@types/styled-components": "^5.1.12",
 		"@typescript-eslint/eslint-plugin": "^4.29.2",
 		"@typescript-eslint/parser": "^4.29.2",
+		"babel-eslint": "^10.1.0",
 		"babel-loader": "^8.2.2",
 		"babel-plugin-styled-components": "^1.13.2",
 		"eslint": "^7.32.0",

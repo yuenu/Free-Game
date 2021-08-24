@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import windowsIcon from 'assets/icons/windows.svg'
 import browserIcon from 'assets/icons/browser.svg'
 import { Game } from 'types'
-import { StyledLink, Img, Title, Detail, Description, Genre, Icon } from './style'
+import { StyledLink, Img, Title, Detail, Description, Genre, Icon } from './styles'
 import { BROWSER, WINDOWS } from './constants'
 
 interface Props {
