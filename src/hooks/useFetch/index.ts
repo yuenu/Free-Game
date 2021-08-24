@@ -3,7 +3,7 @@ import axios from 'axios'
 
 // Types
 import { Game } from 'types'
-import { Filter } from 'components/GameList/types'
+import { Filter } from 'components/GameList/types';
 import { API_HOST, API_KEY } from './constants'
 
 type Response = {
@@ -14,10 +14,9 @@ type Response = {
 const useFetch = (params: Filter): Response => {
 	const [games, setGames] = useState<Game[]>([])
 	const [err, setErr] = useState<string>('')
-	const { platform, genre, tag, sortBy } = params
+	const { platform, genre, tag, sortBy } =  params
 
 	useEffect(() => {
-    console.log('fetch', params)
 		axios
 			.get('/games', {
 				baseURL: `https://${API_HOST}/api`,

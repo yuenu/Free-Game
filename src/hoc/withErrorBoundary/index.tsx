@@ -1,4 +1,4 @@
-import React, { Component, ComponentType, ComponentClass } from "react"
+import React, { Component, ComponentType, ComponentClass } from 'react'
 
 interface State {
 	hasError: boolean

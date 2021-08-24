@@ -4,20 +4,22 @@ import GameListRnder from './GameList.render'
 import { Filter } from './types'
 
 const GameList = (): ReactElement => {
-	const [filter, setFilter] = useState<Filter>({
-		platform: 'browser',
-		sortBy: 'relevance',
-	})
-	const { games, error } = useFetch(filter)
+  const [filter, setFilter] = useState<Filter>({
+    platform: 'browser',
+    sortBy: 'relevance',
+  })
+  const { games, error } = useFetch(filter)
 
-	const onFilterChange = useCallback((event: ChangeEvent<HTMLFormElement>) => {
-		setFilter(current => ({
-			...current,
-			[event.target.name]: event.target.value
-		}))
-		event.preventDefault()
-	}, [])
-	return <GameListRnder err={error} games={games} onFilterChange={onFilterChange} />
+  const onFilterChange = useCallback((event: ChangeEvent<HTMLFormElement>) => {
+    setFilter((current) => ({
+      ...current,
+      [event.target.name]: event.target.value,
+    }))
+    event.preventDefault()
+  }, [])
+  return (
+    <GameListRnder err={error} games={games} onFilterChange={onFilterChange} />
+  )
 }
 
 export default GameList
