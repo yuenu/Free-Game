@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactElement } from 'react'
+import React, { ChangeEvent, ReactElement } from 'react'
 import GameCard from 'components/GameCard'
 import GameFilter from 'components/GameFilter'
 import { Game } from 'types'

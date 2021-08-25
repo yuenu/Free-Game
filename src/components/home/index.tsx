@@ -1,6 +1,6 @@
-import React, { ReactElement} from 'react';
+import React, { ReactElement } from 'react'
 import GameList from 'components/GameList'
-import widthErrorBoundary from 'hoc/withErrorBoundary';
+import widthErrorBoundary from 'hoc/withErrorBoundary'
 
 const Home = (): ReactElement => <GameList />
 
