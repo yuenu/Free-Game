@@ -11,7 +11,8 @@
     "check:types": "tsc --pretty --noEmit",
     "check:format": "prettier --check ./src",
     "format": "prettier --write ./src/**/*.{ts,tsx}",
-    "test:all": "yarn check:types && yarn format && yarn lint && yarn build"
+    "test:all": "yarn check:types && yarn format && yarn lint && yarn build",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
