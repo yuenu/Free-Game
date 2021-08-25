@@ -3,7 +3,7 @@ import { GENRES, PLATFORMS, TAGS, SORT_BY } from './constants'
 import { Form, Label, Select } from './styles'
 
 interface Props {
-  onChange: (e: ChangeEvent<HTMLFormElement>) => void
+  onChange: (e:  ChangeEvent<HTMLFormElement>) => void
 }
 
 const GameFilter = ({ onChange }: Props): ReactElement => (
