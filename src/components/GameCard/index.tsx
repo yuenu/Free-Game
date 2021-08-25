@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import { ReactElement } from 'react'
 import windowsIcon from 'assets/icons/windows.svg'
 import browserIcon from 'assets/icons/browser.svg'
 import { Game } from 'types'
