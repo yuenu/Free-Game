@@ -12,8 +12,9 @@
     "check:format": "prettier --check ./src",
     "format": "prettier --write ./src/**/*.{ts,tsx}",
     "test:all": "yarn check:types && yarn format && yarn lint && yarn build",
-    "postinstall": "husky install"
+    
   },
+  "prepare": "husky install",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"

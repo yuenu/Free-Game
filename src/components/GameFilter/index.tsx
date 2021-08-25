@@ -1,6 +1,6 @@
 import React, { ChangeEvent, ReactElement } from 'react'
 import {  GENRES, PLATFORMS, TAGS, SORT_BY } from './constants'
-import {  Form, Label, Select } from './styles'
+import {  Form, Label,  Select } from './styles'
 
 interface Props {
   onChange: (e:  ChangeEvent<HTMLFormElement>) => void
