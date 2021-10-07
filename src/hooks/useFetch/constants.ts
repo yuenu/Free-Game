@@ -1,2 +1,2 @@
-export const API_KEY = '96f15d106emsh189e48462b60132p1af7b6jsn06adc0c23f42'
+export const API_KEY = 'efc4d9a196mshec1b5c79e7ab275p107945jsn9cd791598547'
 export const API_HOST = 'free-to-play-games-database.p.rapidapi.com'

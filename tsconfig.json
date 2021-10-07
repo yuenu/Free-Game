@@ -24,7 +24,9 @@
     "noEmit": true,
     "esModuleInterop": true,
     "baseUrl": "./",
-
+    "paths": {
+      "*": ["node_modules", "src/*"]
+    }
   },
   "include": ["src/**/*", "types/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "*/*.test.ts"]

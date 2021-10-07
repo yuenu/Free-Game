@@ -47,3 +47,19 @@ export const ListItem = styled.li`
     }
   }
 `
+
+export const ErrorMessage = styled.p`
+  color: #ffffff;
+`
+
+export const ReturnButton = styled.button`
+  background-color: #7a8288;
+  color: #fff;
+  width: 100px;
+  height: 2rem;
+  border:#7a8288;
+
+  &:active {
+    background-color: ;
+  }
+`

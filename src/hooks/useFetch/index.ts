@@ -17,17 +17,21 @@ const useFetch = (params: Filter): Response => {
   const { platform, genre, tag, sortBy } = params
 
   useEffect(() => {
+    const type = tag === undefined
+      ? '/games'
+      : '/filter'
+
     axios
-      .get('/games', {
+      .get(type, {
         baseURL: `https://${API_HOST}/api`,
         headers: {
           'x-rapidapi-key': API_KEY,
           'x-rapidapi-host': API_HOST,
         },
         params: {
-          platform,
+          platform: platform,
           category: genre,
-          tag,
+          tag: tag,
           'sort-by': sortBy,
         },
       })
