@@ -6,7 +6,6 @@
     "allowJs": true,
     "checkJs": true,
     "jsx": "react",
-    "rootDir": "src",
     "removeComments": true,
     "importHelpers": true,
     "downlevelIteration": true,
@@ -24,10 +23,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "baseUrl": ".",
-    "paths": {
-      "*": ["node_modules", "src/*"]
-    }
+    "baseUrl": "./",
+
   },
   "include": ["src/**/*", "types/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "*/*.test.ts"]

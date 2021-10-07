@@ -42,7 +42,7 @@ const GameFilter = ({ onChange }: Props): ReactElement => (
     </Label>
 
     <Label htmlFor="sortBy-select">
-      Tags:
+      Sort by:
       <Select name="sortBy" id="sortBy-select">
         {SORT_BY.map((sortBy) => (
           <option key={sortBy.value} value={sortBy.value}>

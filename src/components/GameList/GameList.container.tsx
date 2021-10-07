@@ -1,5 +1,5 @@
 import React, { ReactElement, useState, useCallback, ChangeEvent } from 'react'
-import useFetch from 'hooks/useFetch'
+import useFetch from '../../hooks/useFetch'
 import GameListRnder from './GameList.render'
 import { Filter } from './types'
 

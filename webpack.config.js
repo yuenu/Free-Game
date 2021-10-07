@@ -15,7 +15,14 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /node_module/,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-typescript',
+              '@babel/preset-react',
+              '@babel/preset-env',
+            ],
+          },
         },
       },
       {
@@ -30,7 +37,8 @@ module.exports = {
     }),
   ],
   resolve: {
-    modules: ['node_modules', path.resolve(__dirname, 'src')],
+    mainFiles: ['index'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   devtool: 'inline-cheap-source-map',
