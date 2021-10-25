@@ -52,12 +52,16 @@ export const ErrorMessage = styled.p`
   color: #ffffff;
 `
 
-export const ReturnButton = styled.button`
+export const ReturnButton = styled.a`
   background-color: #7a8288;
   color: #fff;
   width: 100px;
   height: 2rem;
   border:#7a8288;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  line-height:2rem;
 
   &:active {
     background-color: ;

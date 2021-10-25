@@ -8,11 +8,8 @@ function Router ():ReactElement {
   return (
     <>
       <Switch>
-        <Route path="/">
-          <Home></Home>
-        </Route>
-        <Route path="/game" component={GameDetail}>
-        </Route>
+        <Route exact path="/" component={Home} />
+        <Route path="/game/:id" component={GameDetail} />
       </Switch>
     </>
   )

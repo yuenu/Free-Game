@@ -3,7 +3,6 @@ import GameCard from 'components/GameCard'
 import GameFilter from 'components/GameFilter'
 import { Game } from 'types'
 import { List, ListItem, ErrorMessage, ReturnButton } from './styles'
-
 interface Props {
   err?: string
   games: Game[]
@@ -24,7 +23,7 @@ const GameList = ({ err, games, onFilterChange }: Props): ReactElement => {
         <ErrorMessage>
           No active giveaways available at the moment, please try again later.
         </ErrorMessage>
-        <ReturnButton name="button">Return </ReturnButton>
+        <ReturnButton href="/">Return</ReturnButton>
       </>
     )
   }

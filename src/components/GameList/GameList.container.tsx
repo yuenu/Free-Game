@@ -1,6 +1,6 @@
 import React, { ReactElement, useState, useCallback, ChangeEvent } from 'react'
 import useFetch from '../../hooks/useFetch'
-import GameListRnder from './GameList.render'
+import GameListRender from './GameList.render'
 import { Filter } from './types'
 
 const GameList = (): ReactElement => {
@@ -18,7 +18,7 @@ const GameList = (): ReactElement => {
     event.preventDefault()
   }, [])
   return (
-    <GameListRnder err={error} games={games} onFilterChange={onFilterChange} />
+    <GameListRender err={error} games={games} onFilterChange={onFilterChange} />
   )
 }
 
