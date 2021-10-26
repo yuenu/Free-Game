@@ -17,12 +17,12 @@ const useFetch = (params: Filter): Response => {
   const { platform, genre, tag, sortBy } = params
 
   useEffect(() => {
-    const type = tag === undefined
+    const fetchType = tag === undefined
       ? '/games'
       : '/filter'
 
     axios
-      .get(type, {
+      .get(fetchType, {
         baseURL: `https://${API_HOST}/api`,
         headers: {
           'x-rapidapi-key': API_KEY,

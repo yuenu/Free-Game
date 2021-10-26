@@ -1,10 +1,10 @@
-import React, {ReactElement} from 'react'
+import React, { ReactElement } from 'react'
 import { Route, Switch } from 'react-router-dom'
 // pages
 import Home from './home'
 import GameDetail from './GameDetail'
 
-function Router ():ReactElement {
+function Router(): ReactElement {
   return (
     <>
       <Switch>

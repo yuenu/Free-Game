@@ -36,7 +36,6 @@ const GameCard = ({ content }: Props): ReactElement => {
       default:
         break
     }
-
     return icon
   })
   const link = `/game/${id}`

@@ -3,4 +3,5 @@ export type Filter = {
   genre?: string
   tag?: string
   sortBy: string
+  id?: string
 }
