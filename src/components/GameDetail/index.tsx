@@ -12,9 +12,13 @@ import {
   CtaButton,
   Screenshots,
   SystemRequirements,
+  ShortDescription,
+  Icon
 } from './style'
 import useFetchGameDetail from '../../hooks/useFetchGameDetail'
 import { GameDetailType } from 'types'
+import { SYSTEM_REQUIREMENTS_CODE } from './constants'
+import windowsIcon from 'assets/icons/windows.svg'
 
 type GameParams = {
   id: string
@@ -82,11 +86,18 @@ const GameDetailRender = ({
 
       <Container>
         <Thumbnail>
-          <img src={details.thumbnail} alt="" />
-        </Thumbnail>
+          <img src={details.thumbnail} alt={details.title} />
+          <Title>
+            {details.title}
+            <span>{details.status}</span>
+          </Title>
 
-        <Contnet>
-          <Title>{details.title}</Title>
+          <ShortDescription>{details.short_description}</ShortDescription>
+
+          <CtaButton href={details.game_url} target="_blank" rel="nofollow">
+            Play Now
+          </CtaButton>
+
           <Tags>
             <div>
               <span>Genre</span> {details.genre}
@@ -104,15 +115,28 @@ const GameDetailRender = ({
               <span>Release Date</span> {details.release_date}
             </div>
           </Tags>
+          
+        </Thumbnail>
 
-          <CtaButton href={details.game_url} target="_blank" rel="nofollow">
-            Play Now
-          </CtaButton>
-
+        <Contnet>
           <Description>
-            <h2>About {details.title}</h2>
-            <p>{details.short_description}</p>
+            <h2>About This Game</h2>
+            <p>{details.description}</p>
           </Description>
+
+          <SystemRequirements>
+            <h2>Minimum System Requirements({<Icon src={windowsIcon} />}Windows)</h2>
+            <div className="wrapper">
+              {Object.entries(details.minimum_system_requirements).map(
+                ([key, val]) => (
+                  <div key={key}>
+                    <span>{SYSTEM_REQUIREMENTS_CODE[key]}</span>
+                    <p>{val !== null ? val : 'empty'}</p>
+                  </div>
+                )
+              )}
+            </div>
+          </SystemRequirements>
 
           <Screenshots>
             <h2>{details.title} Screenshots</h2>
@@ -123,17 +147,7 @@ const GameDetailRender = ({
             </div>
           </Screenshots>
 
-          <SystemRequirements>
-            <h2>Minimum System Requirements(Windows)</h2>
-            {Object.entries(details.minimum_system_requirements).map(
-              ([key, val]) => (
-                <div key={key}>
-                  <span>{key.slice(0, 1).toUpperCase() + key.slice(1)}</span>
-                  <p>{val !== null ? val : 'empty'}</p>
-                </div>
-              )
-            )}
-          </SystemRequirements>
+         
         </Contnet>
       </Container>
     </>
