@@ -91,6 +91,19 @@ const GameDetailRender = ({
     )
   }
 
+  const minimumSystemRequirementsRender = 
+  (details?.minimum_system_requirements === undefined)
+    ? <p>NO DATA</p>
+    : Object.entries(details.minimum_system_requirements).map(
+      ([key, val]) => (
+        <div key={key}>
+          <span>{SYSTEM_REQUIREMENTS_CODE[key]}</span>
+          <p>{val !== null ? val : 'empty'}</p>
+        </div>
+      )
+    )
+
+
   return (
     <>
       <ReturnButton onClick={onReturnHandler}>Return</ReturnButton>
@@ -138,14 +151,7 @@ const GameDetailRender = ({
           <SystemRequirements>
             <h2>Minimum System Requirements({<Icon src={windowsIcon} />}Windows)</h2>
             <div className="wrapper">
-              {Object.entries(details.minimum_system_requirements).map(
-                ([key, val]) => (
-                  <div key={key}>
-                    <span>{SYSTEM_REQUIREMENTS_CODE[key]}</span>
-                    <p>{val !== null ? val : 'empty'}</p>
-                  </div>
-                )
-              )}
+              {minimumSystemRequirementsRender}
             </div>
           </SystemRequirements>
 
