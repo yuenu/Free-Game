@@ -13,7 +13,8 @@ import {
   Screenshots,
   SystemRequirements,
   ShortDescription,
-  Icon
+  Icon,
+  Loading
 } from './style'
 import useFetchGameDetail from '../../hooks/useFetchGameDetail'
 import { GameDetailType } from 'types'
@@ -36,7 +37,7 @@ type Props = {
 
 const GameDetailContainer = (props: Props): ReactElement => {
   const { gameId } = props
-  const { details, error } = useFetchGameDetail(gameId)
+  const { details, error, isLoading } = useFetchGameDetail(gameId)
 
   const history = useHistory()
 
@@ -49,6 +50,7 @@ const GameDetailContainer = (props: Props): ReactElement => {
       details={details}
       error={error}
       onReturnHandler={returnHandler}
+      isLoading={isLoading}
     ></GameDetailRender>
   )
 }
@@ -57,17 +59,26 @@ interface RenderProps {
   error?: string
   details?: GameDetailType
   onReturnHandler: (e: MouseEvent<HTMLButtonElement>) => void
+  isLoading: boolean
 }
 
 const GameDetailRender = ({
   details,
   error,
   onReturnHandler,
+  isLoading
 }: RenderProps): ReactElement => {
-  console.log(details)
 
   if (error)
     <ErrorMessage>Unable to fetch games, please try again later</ErrorMessage>
+
+  if(isLoading && !details) {
+    return (
+      <>
+        <Loading />
+      </>
+    )
+  }
 
   if (!details) {
     return (

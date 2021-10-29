@@ -2,17 +2,22 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import { API_HOST, API_KEY } from '../useFetch/constants'
 import { GameDetailType } from 'types'
+import useIsMounted from 'hooks/useIsMounted'
 
 type Response = {
     details: GameDetailType | undefined
-    error?: string
+    error?: string,
+    isLoading: boolean
 }
 
 const useFetchGameDetail = (gameId: string): Response => {
   const [details, setDetails] = useState<GameDetailType>()
   const [error, setError] = useState<string>('')
+  const [isLoading, setIsLoading] = useState(false)
+  const isMounted = useIsMounted()
 
   useEffect(() => {
+    setIsLoading(true)
     axios.get('/game', {
       baseURL: `https://${API_HOST}/api`,
       headers: {
@@ -23,13 +28,22 @@ const useFetchGameDetail = (gameId: string): Response => {
         id: gameId
       }
     })
-      .then((res) => setDetails(res.data))
-      .catch((e) => setError(e.message))
+      .then((res) => {
+        if (isMounted.current) {
+          setDetails(res.data)
+          setIsLoading(false)
+        }
+      })
+      .catch((e) => {
+        setError(e.message)
+        setIsLoading(false)
+      })
   },[gameId])
 
   return {
     details,
-    error
+    error,
+    isLoading
   }
 }
 
