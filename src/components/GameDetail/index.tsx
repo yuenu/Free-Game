@@ -21,6 +21,7 @@ import useFetchGameDetail from '../../hooks/useFetchGameDetail'
 import { GameDetailType } from 'types'
 import { SYSTEM_REQUIREMENTS_CODE } from './constants'
 import windowsIcon from 'assets/icons/windows.svg'
+import useTimeout from 'hooks/useTimeout'
 
 type GameParams = {
   id: string
@@ -70,16 +71,23 @@ const GameDetailRender = ({
   isLoading
 }: RenderProps): ReactElement => {
   const [imageLoading, setImageLoading] = useState(false)
+  const [visible, setVisible] = useState(true)
+  const hide = () => setVisible(false)
+  useTimeout(hide, 5000)
 
-  if (error)
-    <ErrorMessage>Unable to fetch games, please try again later</ErrorMessage>
-
-  if (isLoading && !details) {
+  if(isLoading) {
     return (
       <>
-        <Loading />
+        {visible 
+          ? <Loading />
+          : <ErrorMessage>Unable to fetch games, please try again later</ErrorMessage>
+        }
       </>
     )
+  }
+
+  if (error) {
+    return <ErrorMessage>Unable to fetch games, please try again later</ErrorMessage>
   }
 
   if (!details) {

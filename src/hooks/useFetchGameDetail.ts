@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
-import { API_HOST, API_KEY } from '../useFetch/constants'
+import { API_HOST, API_KEY } from './constants'
 import { GameDetailType } from 'types'
 import useIsMounted from 'hooks/useIsMounted'
 

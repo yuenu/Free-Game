@@ -9,8 +9,8 @@ import {
 export const ReturnButton = styled.button`
   background-color: ${secondaryTextColor};
   color: #ffffff;
-  width: 100px;
-  height: 2rem;
+  width: 100%;
+  height: 40px;
   border: ${secondaryTextColor};
   text-decoration: none;
   display: inline-block;
@@ -19,6 +19,8 @@ export const ReturnButton = styled.button`
   cursor: pointer;
   transition: 250ms;
   margin-bottom: 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
 
   &:active {
     background-color: #aaa;
@@ -29,6 +31,9 @@ export const ReturnButton = styled.button`
   }
 `
 export const ErrorMessage = styled.p`
+  text-align: center;
+  height: 200px;
+  line-height: 200px;
   color: #ffffff;
 `
 

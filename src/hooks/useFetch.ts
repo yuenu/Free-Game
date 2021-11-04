@@ -17,7 +17,6 @@ const useFetch = (params: Filter): Response => {
   const [err, setErr] = useState<string>('')
   const [isLoading, setIsLoading] = useState(false)
   const { platform, genre, tag, sortBy } = params
-  console.log(isLoading)
 
   useEffect(() => {
     setIsLoading(true)
