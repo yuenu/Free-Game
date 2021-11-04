@@ -9,14 +9,18 @@ import { API_HOST, API_KEY } from './constants'
 type Response = {
   games: Game[]
   error?: string
+  isLoading: boolean
 }
 
 const useFetch = (params: Filter): Response => {
   const [games, setGames] = useState<Game[]>([])
   const [err, setErr] = useState<string>('')
+  const [isLoading, setIsLoading] = useState(false)
   const { platform, genre, tag, sortBy } = params
+  console.log(isLoading)
 
   useEffect(() => {
+    setIsLoading(true)
     const fetchType = tag === undefined
       ? '/games'
       : '/filter'
@@ -37,11 +41,13 @@ const useFetch = (params: Filter): Response => {
       })
       .then((res) => setGames(res.data))
       .catch((e) => setErr(e.message))
+      .finally(() => setIsLoading(false))
   }, [platform, genre, tag, sortBy])
 
   return {
     games,
     error: err,
+    isLoading
   }
 }
 

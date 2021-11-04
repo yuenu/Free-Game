@@ -28,16 +28,9 @@ const useFetchGameDetail = (gameId: string): Response => {
         id: gameId
       }
     })
-      .then((res) => {
-        if (isMounted.current) {
-          setDetails(res.data)
-          setIsLoading(false)
-        }
-      })
-      .catch((e) => {
-        setError(e.message)
-        setIsLoading(false)
-      })
+      .then((res) => isMounted.current && setDetails(res.data))
+      .catch((e) => setError(e.message))
+      .finally(() => setIsLoading(false))
   },[gameId])
 
   return {

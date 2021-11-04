@@ -6,7 +6,6 @@ const App = (): ReactElement => (
   <>
     <GlobalStyles />
     <Router />
-
   </>
 )
 

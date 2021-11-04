@@ -8,7 +8,7 @@ const GameList = (): ReactElement => {
     platform: 'browser',
     sortBy: 'relevance',
   })
-  const { games, error } = useFetch(filter)
+  const { games, error, isLoading } = useFetch(filter)
 
   const onFilterChange = useCallback((event: ChangeEvent<HTMLFormElement>) => {
     setFilter((current) => ({
@@ -18,7 +18,7 @@ const GameList = (): ReactElement => {
     event.preventDefault()
   }, [])
   return (
-    <GameListRender err={error} games={games} onFilterChange={onFilterChange} />
+    <GameListRender err={error} games={games} isLoading={isLoading} onFilterChange={onFilterChange} />
   )
 }
 

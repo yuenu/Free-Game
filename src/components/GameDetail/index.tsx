@@ -1,4 +1,4 @@
-import React, { ReactElement, MouseEvent } from 'react'
+import React, { ReactElement, MouseEvent, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import {
   ReturnButton,
@@ -14,7 +14,8 @@ import {
   SystemRequirements,
   ShortDescription,
   Icon,
-  Loading
+  Loading,
+  ScreenshotImage
 } from './style'
 import useFetchGameDetail from '../../hooks/useFetchGameDetail'
 import { GameDetailType } from 'types'
@@ -68,11 +69,12 @@ const GameDetailRender = ({
   onReturnHandler,
   isLoading
 }: RenderProps): ReactElement => {
+  const [imageLoading, setImageLoading] = useState(false)
 
   if (error)
     <ErrorMessage>Unable to fetch games, please try again later</ErrorMessage>
 
-  if(isLoading && !details) {
+  if (isLoading && !details) {
     return (
       <>
         <Loading />
@@ -91,25 +93,30 @@ const GameDetailRender = ({
     )
   }
 
-  const minimumSystemRequirementsRender = 
-  (details?.minimum_system_requirements === undefined)
-    ? <p>NO DATA</p>
-    : Object.entries(details.minimum_system_requirements).map(
-      ([key, val]) => (
-        <div key={key}>
-          <span>{SYSTEM_REQUIREMENTS_CODE[key]}</span>
-          <p>{val !== null ? val : 'empty'}</p>
-        </div>
+  const minimumSystemRequirementsRender =
+    (details?.minimum_system_requirements === undefined)
+      ? <p>NO DATA</p>
+      : Object.entries(details.minimum_system_requirements).map(
+        ([key, val]) => (
+          <div key={key}>
+            <span>{SYSTEM_REQUIREMENTS_CODE[key]}</span>
+            <p>{val !== null ? val : 'empty'}</p>
+          </div>
+        )
       )
-    )
 
+  const handleImageLoaded = (event : React.SyntheticEvent<HTMLImageElement, Event>) => {
+    console.log(
+      `The image with url of ${event.currentTarget.src} has been loaded`
+    )
+    setImageLoading(true)
+  }
 
   return (
     <>
-      <ReturnButton onClick={onReturnHandler}>Return</ReturnButton>
-
       <Container>
         <Thumbnail>
+          <ReturnButton onClick={onReturnHandler}>Return</ReturnButton>
           <img src={details.thumbnail} alt={details.title} />
           <Title>
             {details.title}
@@ -139,13 +146,12 @@ const GameDetailRender = ({
               <span>Release Date</span> {details.release_date}
             </div>
           </Tags>
-          
         </Thumbnail>
 
         <Contnet>
           <Description>
             <h2>About This Game</h2>
-            <p>{details.description}</p>
+            <div>{details.description.split('\r\n').map((item, index) => <p key={index}>{item}</p>)}</div>
           </Description>
 
           <SystemRequirements>
@@ -159,12 +165,12 @@ const GameDetailRender = ({
             <h2>{details.title} Screenshots</h2>
             <div>
               {details.screenshots.map((shot) => {
-                return <img key={shot.id} src={shot.image} alt="" />
+                return <ScreenshotImage key={shot.id} src={shot.image} alt="" onLoad={handleImageLoaded} style={{ opacity: imageLoading ? '1' : '0'}} />
               })}
             </div>
           </Screenshots>
 
-         
+
         </Contnet>
       </Container>
     </>

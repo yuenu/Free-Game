@@ -6,8 +6,8 @@ import {
   primaryTextColor,
   secondaryTextColor,
   tertiaryTextColor,
-} from 'styles/theme'
-import { breakpoints } from 'styles/breakpoints'
+} from 'styles'
+import { breakpoints } from 'styles'
 
 export const StyledLink = styled(Link)`
   display: inline-block;
@@ -25,6 +25,7 @@ export const Title = styled.h2`
   font-size: 24px;
   font-weight: 510;
   color: ${primaryTextColor};
+  margin-bottom:7px;
 
   @media (min-width: ${breakpoints.tablet}) {
     overflow: hidden;
@@ -43,6 +44,7 @@ export const Detail = styled.div`
 export const Description = styled.p`
   font-size: 16px;
   color: ${secondaryTextColor};
+  margin-bottom:10px;
 
   @media (min-width: ${breakpoints.tablet}) {
     overflow: hidden;

@@ -3,21 +3,30 @@ import GameCard from 'components/GameCard'
 import GameFilter from 'components/GameFilter'
 import { Game } from 'types'
 import { List, ListItem, ErrorMessage, ReturnButton } from './styles'
+import {Loading} from '../../styles'
 interface Props {
   err?: string
-  games: Game[]
+  games: Game[],
+  isLoading: boolean,
   onFilterChange: (e: ChangeEvent<HTMLFormElement>) => void
 }
 
-const GameList = ({ err, games, onFilterChange }: Props): ReactElement => {
+const GameList = ({ err, games, isLoading, onFilterChange }: Props): ReactElement => {
+  if(isLoading) {
+    return (
+      <>
+        <Loading />
+      </>
+    )
+  }
+
   if (err) {
     return (
       <ErrorMessage>Unable to fetch games, please try again later</ErrorMessage>
     )
   }
 
-  if (!games?.length) {
-    console.log(err)
+  if (!isLoading && !games?.length) {
     return (
       <>
         <ErrorMessage>

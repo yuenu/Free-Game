@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
-import { fontFamily } from 'styles/fonts'
-import { primaryColor } from 'styles/theme'
+import { fontFamily } from 'styles'
+import { primaryColor } from 'styles'
 
 const GlobalStyles = createGlobalStyle`
   *,*::before,*::after {

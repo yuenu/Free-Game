@@ -3,8 +3,8 @@ import {
   primaryTextColor,
   secondaryTextColor,
   tertiaryTextColor,
-} from '../../styles/theme'
-import { breakpoints } from '../../styles/breakpoints'
+  breakpoints
+} from 'styles'
 
 export const ReturnButton = styled.button`
   background-color: ${secondaryTextColor};
@@ -18,6 +18,7 @@ export const ReturnButton = styled.button`
   line-height: 2rem;
   cursor: pointer;
   transition: 250ms;
+  margin-bottom: 10px;
 
   &:active {
     background-color: #aaa;
@@ -63,7 +64,7 @@ export const Thumbnail = styled.div`
   width: 100%;
   height: 100%;
   position: sticky;
-  top: 58px;
+  top: 20px;
 
   @media (max-width: ${breakpoints.tablet}) {
     position: static;
@@ -133,6 +134,7 @@ export const Description = styled.div`
     font-size: 14px;
     line-height: 1.7;
     letter-spacing: 0.6px;
+    margin-bottom:10px;
   }
 `
 
@@ -166,6 +168,10 @@ export const Screenshots = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
   }
+`
+
+export const ScreenshotImage = styled.img`
+
 `
 
 export const SystemRequirements = styled.div`
